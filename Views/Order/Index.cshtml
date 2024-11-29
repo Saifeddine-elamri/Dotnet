@@ -1,0 +1,30 @@
+@model IEnumerable<OrderApp.Models.Order>
+
+<h1>Orders</h1>
+
+<p>
+    <a href="@Url.Action("Create")">Create New Order</a>
+</p>
+
+<table class="table">
+    <thead>
+        <tr>
+            <th>Order Date</th>
+            <th>Total Amount</th>
+            <th>Actions</th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var order in Model)
+        {
+            <tr>
+                <td>@order.OrderDate</td>
+                <td>@order.TotalAmount</td>
+                <td>
+                    <a href="@Url.Action("Edit", new { id = order.Id })">Edit</a> |
+                    <a href="@Url.Action("Delete", new { id = order.Id })">Delete</a>
+                </td>
+            </tr>
+        }
+    </tbody>
+</table>
